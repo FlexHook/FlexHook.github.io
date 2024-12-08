@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>错误页面</title>
+		<style>
+	        body {
+	            text-align: center;
+	            padding: 10%;
+	            user-select: none;
+	        }
+	        h1 {
+	            font-size: 2em;
+	            color: red;
+	            user-select: none;
+	        }
+	        button {
+	            display: inline-block;
+	            width: 100px;
+	            margin: 0 10px;
+	            padding: 10px;
+	            border: 1px solid #ccc;
+	            border-radius: 5px;
+	            background-color: #fff;
+	            user-select: none;
+	            opacity: 0.7;
+	            
+	        }
+	        button:active {
+	            background-color: #333;
+	            color: #fff;
+	        }
+        </style>
+	</head>
+	<body>
+		<h1>哎呀，出错了！</h1>
+		<p>请检查您的网络连接或稍后再试。</p> <button onclick="刷新()">刷新</button> <button id="fh" onclick="返回()">返回</button>
+		<script>
+	        function 刷新(){
+	            location.reload();
+	        }
+	        function 返回(){
+		        if (window.history.length > 1) {
+		            window.history.go(-1);
+		        } else {
+		            location.reload();
+		        }
+	        }
+        </script>
+	</body>
+</html>
