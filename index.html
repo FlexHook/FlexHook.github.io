@@ -1,52 +1,242 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>错误页面</title>
-		<style>
-	        body {
-	            text-align: center;
-	            padding: 10%;
-	            user-select: none;
-	        }
-	        h1 {
-	            font-size: 2em;
-	            color: red;
-	            user-select: none;
-	        }
-	        button {
-	            display: inline-block;
-	            width: 100px;
-	            margin: 0 10px;
-	            padding: 10px;
-	            border: 1px solid #ccc;
-	            border-radius: 5px;
-	            background-color: #fff;
-	            user-select: none;
-	            opacity: 0.7;
-	            
-	        }
-	        button:active {
-	            background-color: #333;
-	            color: #fff;
-	        }
-        </style>
-	</head>
-	<body>
-		<h1>哎呀，出错了！</h1>
-		<p>请检查您的网络连接或稍后再试。</p> <button onclick="刷新()">刷新</button> <button id="fh" onclick="返回()">返回</button>
-		<img src="http://pvp.wuaze.com/Netdisk/view.php/20c627ef06fd9aa635294b03478d03a3.jpg"/>
-		<script>
-	        function 刷新(){
-	            location.reload();
-	        }
-	        function 返回(){
-		        if (window.history.length > 1) {
-		            window.history.go(-1);
-		        } else {
-		            location.reload();
-		        }
-	        }
-        </script>
-	</body>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+ <body>
+  <title></title>
+  <div id="addt">
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+      var addt = document.getElementById("addt")
+      lanzou("https://wwym.lanzoui.com/b04dy0xmh", "6666")
+      function lanzou(Url, pwd) {
+          (async () => {
+              try {
+                  const result = await $.ajax({
+                      url: Url,
+                      type: 'get',
+                      headers: {
+                          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+                          'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7'
+                      },
+                      cache: false,
+                      xhrFields: {
+                          withCredentials: true
+                      }
+                  });
+                  var t1 = t(result);
+                  var k1 = k(result);
+                  var lx1 = lx(result);
+                  var fid1 = fid(result);
+                  var uid1 = uid(result);
+                  var rep1 = rep(result);
+                  var up1 = up(result);
+                  var ls1 = ls(result);
+                  var Host = new URL(Url).origin;
+                  var formData = {
+                      "lx": lx1,
+                      "fid": fid1,
+                      "uid": uid1,
+                      "pg": "1",
+                      "rep": rep1,
+                      "t": t1,
+                      "k": k1,
+                      "up": up1,
+                      "ls": ls1,
+                      "pwd": pwd
+                  };
+                  var Url2 = Host + "/filemoreajax.php?file=" + fid1;
+                  const result2 = await $.ajax({
+                      url: Url2,
+                      type: 'post',
+                      headers: {
+                          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+                          'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+                          'Referer': Url,
+                          'Origin': Host,
+                          'Content-Type': 'application/x-www-form-urlencoded'
+                      },
+                      data: formData,
+                      dataType: 'json',
+                      cache: false,
+                      xhrFields: {
+                         withCredentials: true
+                      }
+                  });
+                  if (result2.zt == 1){
+                      var Url3 = Host + "/"+ (result2.text[0].id).replace(/^\//, "");
+                      addt.insertAdjacentHTML("beforeend", "<p>" + Url3 + "</p>");
+                      const result3 = await $.ajax({
+                         url: Url3,
+                         type: 'get',
+                         headers: {
+                             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+                             'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+                             'Referer': Url,
+                         },
+                         cache: false,
+                         xhrFields: {
+                             withCredentials: true
+                         }
+                      });
+                      var Url4 = Host + "/"+ Url44(result3).replace(/^\//, "");
+                      addt.insertAdjacentHTML("beforeend", "<p>" + Url4 + "</p>");
+                      const result4 = await $.ajax({
+                         url: Url4,
+                         type: 'get',
+                         headers: {
+                             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+                             'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+                             'Referer': Url3,
+                         },
+                         cache: false,
+                         xhrFields: {
+                            withCredentials: true
+                         }
+                      });
+                      var Url5 = lsb(result4)
+                      addt.insertAdjacentHTML("beforeend", "<p>" + Url5 + "</p>");
+                      console.log(Url5)
+                  } else {
+                      console.log("错误码: ",result2.zt)
+                  }
+              } catch (error) {
+                  console.error("请求出错:", error);
+              }
+          })();
+      }
+      function lsb(data) {
+          const hrefRegex = /submit\.href\s*=\s*([^;]+?)\s*(?:;|\n|$)/gis;
+          const hrefMatch = hrefRegex.exec(data);
+          if (!hrefMatch) return "";
+          const variables = hrefMatch[1]
+              .split(/\s*\+\s*/)
+              .map(v => v.trim())
+              .filter(v => v);
+          const varValues = {};
+          const varRegex = /var\s+(\w+)\s*=\s*('[^']*'|"[^"]*"|[^;\n]+)/g;
+          let varMatch;
+          while ((varMatch = varRegex.exec(data)) !== null) {
+              const varName = varMatch[1];
+              let varValue = varMatch[2];
+              if ((varValue.startsWith("'") && varValue.endsWith("'")) || 
+                  (varValue.startsWith('"') && varValue.endsWith('"'))) {
+                  varValue = varValue.slice(1, -1);
+              }
+              varValues[varName] = varValue.trim();
+          }
+          let result = "";
+          for (const varName of variables) {
+              if (varValues[varName] !== undefined) {
+                  result += varValues[varName];
+              }
+          }
+          return result;
+      }
+      function t(data) {
+          const matcher = new RegExp("['\"]t['\"]\\s*:(.*?),", "gis");
+          const match = matcher.exec(data);
+          if (match) {
+              const varName = match[1].trim();
+              const matcher2 = new RegExp(`var\\s${varName}\\s*[:=]\\s*['\"](.*?)['\"]`, "gi");
+              const match2 = matcher2.exec(data);
+              if (match2 && match2[1]) {
+                  return match2[1].trim();
+              }
+          }
+          return "";
+      }
+      function k(data) {
+          const matcher = new RegExp("['\"]k['\"]\\s*:(.*?),", "gis");
+          const match = matcher.exec(data);
+          if (match) {
+              const varName = match[1].trim();
+              const matcher2 = new RegExp(`var\\s${varName}\\s*[:=]\\s*['\"](.*?)['\"]`, "gi");
+              const match2 = matcher2.exec(data);
+              if (match2 && match2[1]) {
+                  return match2[1].trim();
+              }
+          }
+          return "";
+      }
+      function lx(data) {
+          const matcher = new RegExp("['\"]lx['\"]\\s*:(.*?),", "gi");
+          const match = matcher.exec(data);
+          if (match && match[1]) {
+              return match[1].trim();
+          }
+          return "";
+      }
+      function fid(data) {
+          const matcher = /['"]fid['"]\s*:(.*?),/gi;
+          const match = matcher.exec(data);
+          if (match && match[1]) {
+              return match[1].trim();
+          }
+          return "";
+      }
+      function uid(data) {
+          const matcher = /['"]uid['"]\s*:\s*['"](.*?)['"]/gi;
+          const match = matcher.exec(data);
+          return match?.[1]?.trim() || "";
+      }
+      function rep(data) {
+          const match = /['"]rep['"]\s*:\s*['"](.*?)['"]/gi.exec(data);
+          return match?.[1]?.trim() || "";
+      }
+      function up(data) {
+          const match = /['"]up['"]\s*:\s*(.*?),/gi.exec(data);
+          return match?.[1]?.trim() || "";
+      }
+      function ls(data) {
+          const match = /['"]ls['"]\s*:\s*(.*?),/gi.exec(data);
+          return match?.[1]?.trim() || "";
+      }
+      function Url44(data) {
+          let iframePattern = /<iframe.*?src\s*[:=]\s*['"](.*?)['"].*?<\/iframe>/gis;
+          let iframeMatch = iframePattern.exec(data);
+          if (iframeMatch && iframeMatch[1]) {
+              let url = iframeMatch[1].trim();
+              if (url) {
+                  return "/" + url.replace(/^\//, "");
+              }
+          }
+          let linkPattern = /var\slink\s*[:=]\s*['"](.*?)['"]/gis;
+          let linkMatch = linkPattern.exec(data);
+          if (linkMatch && linkMatch[1]) {
+              let url = linkMatch[1].trim();
+              if (url) {
+                  return "/" + url.replace(/^\//, "");
+              }
+          }
+          const downUrlPattern = /<a\s+(?=[^>]*id\s*=\s*["']downurl["'])(?=[^>]*href\s*=\s*["']([^"']+)["'])[^>]*>/i;
+          const downUrlMatch = downUrlPattern.exec(data);
+          if (downUrlMatch && downUrlMatch[1]) {
+              const url = downUrlMatch[1].trim();
+              if (url) return "/" + url.replace(/^\//, "");
+          }
+          return "";
+      }
+      function hasParams() {
+          const queryString = window.location.search.substring(1);
+          return queryString.length > 0;
+      }
+      function QueryParam(paramName) {
+          const queryString = window.location.search.substring(1);
+          const params = queryString.split('&');
+          for (let i = 0; i < params.length; i++) {
+              const param = params[i].split('=');
+              if (param[0] === paramName) {
+                  return param[1];
+              }
+          }
+          return null;
+      }
+    </script>
+  <html>
+   <body></body>
+  </html>
+ </body>
 </html>
